@@ -28,13 +28,16 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('WorkshopCtrl', function($scope, $ionicPopup, $ionicActionSheet, UsersService) {
+.controller('WorkshopCtrl', function($scope, $ionicPopup, $ionicActionSheet, UsersService, $ionicLoading, $cordovaCamera) {
   $scope.twitter = "@wilmer";
+    $scope.image=null;
   $scope.showAlert = showAlert;
   $scope.showOptions = showOptions;
-
+    $scope.takePhoto = takePhoto;
+    $ionicLoading.show();
   UsersService.getAllUsers()
   .then(function(response) {
+      $ionicLoading.hide();
     $scope.users = response.data.results;
   });
 
@@ -56,4 +59,26 @@ angular.module('starter.controllers', [])
       ]
     });
   }
+    function takePhoto(){
+        var options = {
+          quality: 100,
+          destinationType: Camera.DestinationType.DATA_URL,
+          sourceType: Camera.PictureSourceType.CAMERA,
+          encodingType: Camera.EncodingType.JPEG,
+          targetWidth: 100,
+          targetHeight: 100,
+          popoverOptions: CameraPopoverOptions,
+          saveToPhotoAlbum: false,
+          correctOrientation:true
+        }
+        $cordovaCamera.getPicture(options)
+            .then(function(imageData){
+            $scope.image="data:image/jpeg;base64," + imageData;
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+        $scope.image="http://www.lib.umn.edu/libdata/page.phtml?page_id=3935"
+        console.log($scope.image);
+    }
 });

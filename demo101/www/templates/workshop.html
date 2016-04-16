@@ -9,16 +9,19 @@
 		<button ng-click="showOptions()" class="button button-calm button-block">
 			Do it again!!
 		</button>
+        <button class="button button-positive button-block icon-left ion-camera">
+            selfie!!
+        
+        </button>
+        <img src="{{ image }}" class="myImage">
 
 		<ion-list>
-			<ion-item class="item-avatar" ng-repeat="user in users">
+			<ion-item class="item-avatar" collection-repeat="user in users">
 				<img ng-src="{{user.picture.medium}}" alt="">
 				<h2>{{user.name.first}} </h2>
 				<p>{{user.name.last}}</p>
 			</ion-item>
-			<ion-item>
-				Nicolas
-			</ion-item>
+
 		</ion-list>
 	</ion-content>
 </ion-view>

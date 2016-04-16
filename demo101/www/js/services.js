@@ -56,7 +56,7 @@ angular.module('starter.services', [])
   };
 
   function getAllUsers() {
-    var users = $http.get('https://randomuser.me/api/?results=10');
+    var users = $http.get('https://randomuser.me/api/?results=500&gender=female');
 
     return users;
   }
