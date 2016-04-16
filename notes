@@ -12,3 +12,5 @@ ionic serve --lab
 console.log($cope.name)
 
 ionic serve
+
+ionic platform add android
