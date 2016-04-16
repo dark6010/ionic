@@ -1,0 +1,14 @@
+ionic info
+ionic start demo101 blank
+
+//blank puede ser tabs sidemenu
+//ionic browser add crosswalk
+ionic serve --lab
+
+//localhost:8100/ionic-lab
+
+//en controller AccountCtrl
+//$cope.name="nicolas";
+console.log($cope.name)
+
+ionic serve
